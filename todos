@@ -26,7 +26,7 @@ https://www.youtube.com/watch?v=msXL2oDexqw&list=PLmbC-xnvykcghOSOJ1ZF6ja3aOgZAg
 Program felépítése:
 Frontend
 Kinézet
- ![wireframe](asd.jpg)
+asd.jpg
 -	Bal oldalt legyen egy nyitható/csukható ablak, ami csak akkor használható ha be vagyunk jelentkezve. Ez tartalmazza a következő alpontokat:
 profil – adatok, felhasználónév, email, jelszóváltoztatás
 my forums – a felhasználó által létrehozott alfórumok kilistázása, hivatkozással a fórumbejegyzésre
@@ -41,5 +41,22 @@ subscribed forums – feliratkozott fórumok listázása
 -	jobb oldalt ezek alatt elemek pl új felhasználók, új fórumok, új fórumposztok...
 -	lehetnek valami widgetek is alatta, majd meglátjuk.
 -	Fórumposzt: A fórumposztnak van címe, leírása, up és downvoteolási lehetőségei, és kommentjei. A kommenteknek is lehetnek kommentjei.
-Backend
+Megjelenítjük, hogy ki írta ezeket a kommenteket, fórumposztokat, és megtekinthetjük. 
+Végpontok
+Főoldal : /index
+profil: /profil
+userek: /users/{username}
+fórumok: /f/{forumName}
+fórumposzt: /f/{forumName}/{id}
 
+Backend
+Táblák(nem végleges):
+http://dbdesigner.net/designer/schema/151504
+User - felhasználót regisztrációkor hozunk létre. Frontendről jön az adat a következő GET végpontra: "/users". 16 karakter lehet a felhasználónév és a jelszó is,
+email pedig 1 regexnek feleljen meg. Ha nincs ilyen nevezetű/emailű felhasználó, akkor mentsük el az adatbázisba.
+     - Felhasználó megtekintése a következő GET végpontról: "users/{username}". Ilyenkor visszaadjuk a username, upvotes, downvotes, registrationDate mezőket a megfelelő felhasználótól.
+     - "/profil" visszaadja a jelenlegi felhasználónak az adatait, a tábla összes elemét.
+     - "/f" visszaadjuk az összes fórumot
+     - "/f/{forumName}" visszaadjuk a forumName-hez tartozó posztokat
+     - "/f/{forumName}/{id}" visszaadjuk az adott fórumhoz az id fórumposztot kommentekkel
+     
