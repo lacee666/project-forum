@@ -1,0 +1,45 @@
+Tutorialok:
+alkfejl tuts(frontend and backend):
+https://github.com/godzsa/issue-tracker
+https://github.com/horvathgyozo/alkfejl-2017
+
+Frontend tuts:
+docs
+https://angular.io/docs
+GET POST
+https://www.youtube.com/watch?v=L7xPwhwbcHE
+great tutorial series
+https://www.youtube.com/watch?v=3F7D03NFmew&list=PLlRapu2ErjJ-wF76YOEPPmfsXkX1Jioup
+authguard
+https://www.youtube.com/watch?v=0Qsg8fyKwO4
+
+Backend tuts:
+spring website, setup
+https://spring.io/guides/gs/spring-boot/
+nutriometer beadandó
+https://github.com/lacee666/nutriometer/tree/master/backend
+spring boot setup
+https://www.callicoder.com/spring-boot-mongodb-angular-js-rest-api-tutorial/
+indian tutorial
+https://www.youtube.com/watch?v=msXL2oDexqw&list=PLmbC-xnvykcghOSOJ1ZF6ja3aOgZAgaMO&index=1
+
+Program felépítése:
+Frontend
+Kinézet
+ 
+-	Bal oldalt legyen egy nyitható/csukható ablak, ami csak akkor használható ha be vagyunk jelentkezve. Ez tartalmazza a következő alpontokat:
+profil – adatok, felhasználónév, email, jelszóváltoztatás
+my forums – a felhasználó által létrehozott alfórumok kilistázása, hivatkozással a fórumbejegyzésre
+my comments – felhasználó kommentjei listázva, hivatkozással a fórumbejegyzésre
+my threads - a felhasználó által létrehozott fórumposztok kilistázása, hivatkozással a fórumbejegyzésre
+my upvotes – upvoteolt posztok - || -
+my downvotes – downvoteolt posztok - || -
+subscribed forums – feliratkozott fórumok listázása
+-	középen felül 1 kereső, ahol fórumokat tudunk keresni, ha fórumban vagyunk, akkor pedig fórumposztokra tudunk keresni. listázni lehet a következőképpen: most upvotes, most downvotes, most viewed...
+-	középen alul pedig a kilistázott elemek látszódnak. Minden elem így néz ki: egy opcionális kép a bal oldalon, fórum címe, fórum leírása. Ha a kilistázott elem fórumposzt, az is lehet hasonló, majd eldől fejlesztés közben
+-	jobb oldalt felül lehet bejelentkezni és regisztrálni. Ha be vagyunk jelentkezve, akkor ezek az elem ne jelenjenek meg. Bejelentkezés szimpla username és password mezők, legyenek ellenőrizve (max 16 karakter mind2). Regisztráció mezőnél kérjük az email-t is, valamilyen regexet használjunk ellenőrzésképpen.
+-	jobb oldalt ezek alatt elemek pl új felhasználók, új fórumok, új fórumposztok...
+-	lehetnek valami widgetek is alatta, majd meglátjuk.
+-	Fórumposzt: A fórumposztnak van címe, leírása, up és downvoteolási lehetőségei, és kommentjei. A kommenteknek is lehetnek kommentjei.
+Backend
+
