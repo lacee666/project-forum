@@ -18,10 +18,6 @@ import java.util.ArrayList;
 @EqualsAndHashCode(callSuper = true)
 public class Comment extends BaseEntity {
 
-    @JoinColumn
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = User.class)
-    private ArrayList<Comment> comments;
-
     @Column(nullable = false)
     private String creationDate;
 

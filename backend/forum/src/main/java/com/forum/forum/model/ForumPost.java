@@ -17,11 +17,10 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class ForumPost extends BaseEntity {
-
+    /*
     @JoinColumn
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = User.class)
-    private ArrayList<Comment> comments;
-
+     */
     @Column(nullable = false)
     private String creationDate;
 

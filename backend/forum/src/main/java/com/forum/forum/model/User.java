@@ -27,7 +27,13 @@ public class User extends BaseEntity {
     @Column(nullable = false, unique = true)
     private boolean isAdmin;
 
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
+    public enum Role {
+        GUEST, USER, ADMIN
+    }
 
 
 }

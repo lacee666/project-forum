@@ -19,11 +19,11 @@ public class Forum extends BaseEntity {
 
     @Column(nullable = false, unique = true)
     private String forumName;
-
+    /*
     @JoinColumn
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = User.class)
     private ArrayList<User> subscribedUsers;
-
+    */
     @Column(nullable = false)
     private String creationDate;
 
