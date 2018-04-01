@@ -27,14 +27,13 @@ public class UserApiController {
     UserRepository userRepository;
 
 
-
     @GetMapping("/woop")
     public String woop() {
         return "HI";
     }
 
 
-    @Role({USER,ADMIN})
+    @Role({USER, ADMIN})
     @GetMapping
     public ResponseEntity<User> user() {
         if (userService.isLoggedIn()) {

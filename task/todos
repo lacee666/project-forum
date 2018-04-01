@@ -1,5 +1,5 @@
 EXTRA TOOLS:
-SonarQube:
+1. SonarQube:
 https://docs.sonarqube.org/display/SONAR/Setup+and+Upgrade
 https://www.sonarqube.org/
 tldr setup: 
@@ -13,6 +13,10 @@ sonar.sources = a ForumApplication.java mappája (.../forum/src/main/java/com/fo
 - localhost:9000-en fog futni
 - backend forumban nyomjatok egy mvn sonar:sonar
 - ha ezt befejezte, akkor a szerveren lehet látni az eredményt
+
+2. google-java-formatter
+setup:
+IntelliJ-ben File, Settings, Plugin, Browse repositories,search for google-java-formatter, restart, ctrl+alt+L format code 
 ------------------------------------------
 
 Tutorialok:
