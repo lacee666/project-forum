@@ -1,3 +1,20 @@
+EXTRA TOOLS:
+SonarQube:
+https://docs.sonarqube.org/display/SONAR/Setup+and+Upgrade
+https://www.sonarqube.org/
+tldr setup: 
+- töltsétek le, pathba tegyétek bele a sonarqube {út}/sonarqube-6.7.2/bin/{verzió}
+- conf/sonar.properties legaljára szúrjátok be:
+sonar.projetKey = forum
+sonar.projectName = forum
+sonar.projectVersion = 1.0
+sonar.sources = a ForumApplication.java mappája (.../forum/src/main/java/com/forum/forum)
+- indítsátok el a sonarqubet a bin/{verzió} mappában StartSonar.bat paranccsal
+- localhost:9000-en fog futni
+- backend forumban nyomjatok egy mvn sonar:sonar
+- ha ezt befejezte, akkor a szerveren lehet látni az eredményt
+------------------------------------------
+
 Tutorialok:
 alkfejl tuts(frontend and backend):
 https://github.com/godzsa/issue-tracker
