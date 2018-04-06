@@ -13,6 +13,7 @@ import static com.forum.forum.model.User.Role.USER;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
+
     private User user;
 
     public User login(User user) throws UserNotValidException {
