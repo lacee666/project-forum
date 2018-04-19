@@ -19,31 +19,37 @@ public class Forum extends BaseEntity {
     @Column(nullable = false, unique = true, length = 50)
     private String forumName;
 
-    @Column(nullable = false, unique = true, length = 50)
+    @Column(nullable = false, unique = true, length = 100)
     private String description;
 
     @Column(nullable = false)
-    private Date creationDate;
+    private String creationDate;
 
     @Column(nullable = false)
     private long forumAdminId;
 
     //not sure if this works
     @Lob
-    @Column(name="POST_PICTURE")
-    private byte[] profilePic;
+    @Column(name="FORUM_PICTURE")
+    private byte[] picture;
 
     @ElementCollection
     @CollectionTable(name = "forum_users", joinColumns = @JoinColumn(name = "iduser"))
-    private Set<Long> subscribedUsers = new HashSet<>();
+    private Set<Long> subscribedUserIds = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "forum")
-    private Set<ForumPost> comments = new HashSet<>();
+    private Set<ForumPost> forumPosts = new HashSet<>();
 
-    public Forum(String forumName, String description, long forumAdminId, byte[] profilePic) {
+    public Forum(String forumName, String description, long forumAdminId, byte[] picture) {
         this.forumName = forumName;
         this.description = description;
         this.forumAdminId = forumAdminId;
-        this.profilePic = profilePic;
+        this.picture = picture;
+    }
+
+    public Forum(String forumName, String description, long forumAdminId) {
+        this.forumName = forumName;
+        this.description = description;
+        this.forumAdminId = forumAdminId;
     }
 }

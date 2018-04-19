@@ -27,13 +27,13 @@ public class ForumPost extends BaseEntity {
     @Column(nullable = false, length = 50)
     private String title;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 100)
     private String description;
 
     //not sure if this works
     @Lob
     @Column(name="POST_PICTURE")
-    private byte[] profilePic;
+    private byte[] picture;
 
     //We have annotated the comments field in the Post entity with @OneToMany annotation to declare that the Post entity has a one-to-many association with the Comment entity.
     //We use the mappedBy attribute in the Post entity to declare that it is not responsible for the relationship and hibernate
@@ -48,5 +48,11 @@ public class ForumPost extends BaseEntity {
     public ForumPost(String title, String description) {
         this.title = title;
         this.description = description;
+    }
+
+    public ForumPost(String title, String description, byte[] picture) {
+        this.title = title;
+        this.description = description;
+        this.picture = picture;
     }
 }
