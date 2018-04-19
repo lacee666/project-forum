@@ -1,3 +1,8 @@
-<h1>
-  Forum
-</h1>
+<div class="headerComponent">
+  <div class="menu">
+    <ul>
+      <li *ngFor="let item of menuItems">
+        <a routerLink="/{{item.link}}"> {{item.name}}</a>   
+      </li>
+    </ul>
+</div>

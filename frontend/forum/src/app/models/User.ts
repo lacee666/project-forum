@@ -1,11 +1,12 @@
-import {Comments} from './Comments'
-import {Forumpost} from './Forumpost'
+import {Comment} from './Comment'
+import {ForumPost} from './ForumPost'
+
 export class User{
     username: String;
     email: String;
     password: String;
-    comments: Array<Comments>;
-    upvotes: Array<Forumpost>;
-    downvotes: Array<Forumpost>;
-    myPosts: Array<Forumpost>;
+    comments: Array<Comment>;
+    upvotes: Array<ForumPost>;
+    downvotes: Array<ForumPost>;
+    myPosts: Array<ForumPost>;
 }

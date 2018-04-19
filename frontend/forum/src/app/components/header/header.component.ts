@@ -11,6 +11,11 @@ export class HeaderComponent implements OnInit {
 
   menuItems: Array<menuItem> = [
     {name: "HomePage", link: ""},
+    {name: "My forums", link: "myforums"},
+    {name: "My comments", link: "mycomments"},
+    {name: "My Threads", link: "mythreads"},
+    {name: "My upvotes", link: "myupvotes"},
+    {name: "My downvotes", link: "mydownvotes"},
     {name: "Sign in/up", link: "login"},
     {name: "Contact", link: "contact"},
     

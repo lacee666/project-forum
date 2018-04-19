@@ -1,6 +1,6 @@
-export class ForumPost{
+export class Forum{
     title: String;
     picture: ByteString;
     text: String;
-    user: String;
+    admin: String;
 }
