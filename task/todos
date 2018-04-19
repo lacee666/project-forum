@@ -71,13 +71,28 @@ fórumok: /f/{forumName}
 fórumposzt: /f/{forumName}/{id}
 
 Backend
-Táblák(nem végleges):
-http://dbdesigner.net/designer/schema/151504
-User - felhasználót regisztrációkor hozunk létre. Frontendről jön az adat a következő GET végpontra: "/users". 16 karakter lehet a felhasználónév és a jelszó is,
-email pedig 1 regexnek feleljen meg. Ha nincs ilyen nevezetű/emailű felhasználó, akkor mentsük el az adatbázisba.
-     - Felhasználó megtekintése a következő GET végpontról: "users/{username}". Ilyenkor visszaadjuk a username, upvotes, downvotes, registrationDate mezőket a megfelelő felhasználótól.
-     - "/profil" visszaadja a jelenlegi felhasználónak az adatait, a tábla összes elemét.
-     - "/f" visszaadjuk az összes fórumot
-     - "/f/{forumName}" visszaadjuk a forumName-hez tartozó posztokat
-     - "/f/{forumName}/{id}" visszaadjuk az adott fórumhoz az id fórumposztot kommentekkel
+Táblák: https://gyazo.com/8535cccad47690f6def0fc370ed67b35
+
+Regisztráció: "/registration" (PostRequest)
+    -username:  16 karakter, unique
+    -password:  16 karakter
+    -email:     regex alapján
+
+Login: "/login" (GetRequest)
+    -username
+    -password
+
+Profilom: "/profil" (GetRequest)
+    -login után pl ez jön be
+
+Get user: "/user/{id}" vagy "/user/{username}" (kommenteknél ha rákattintunk a user névre)
+
+Get all forum: "/f" (GetRequest)
+    -mindent átküldünk Frontend válogat kedve szerint
+
+Get specific forum: "/f/{forumname}" vagy "/f/{id}"
+    -mindent elküldünk az adott forumról
+
+
+
      

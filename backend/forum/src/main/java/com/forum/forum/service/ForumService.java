@@ -18,7 +18,7 @@ public class ForumService {
 
     public Forum create(String name, String description, byte[] picture, long adminId) {
         Forum forum = new Forum(name, description, adminId, picture);
-        forum.setCreationDate(new Date());
+        forum.setCreationDate(new Date().toString());
         forumRepository.save(forum);
         System.out.println("Forum created.");
         return forum;

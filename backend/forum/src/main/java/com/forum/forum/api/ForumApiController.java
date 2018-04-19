@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/forum")
 public class ForumApiController {
-    @Autowired
+    /*@Autowired
     private ForumService forumService;
 
     @Autowired
@@ -36,7 +36,7 @@ public class ForumApiController {
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
-    }
+    }*/
 
 
 

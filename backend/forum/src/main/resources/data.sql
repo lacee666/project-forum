@@ -1,0 +1,2 @@
+INSERT INTO USERS (VERSION, USERNAME, PASSWORD, EMAIL, RDATE, ROLE)
+VALUES (0, 'Bence', 'BenceKiraly00012', 'Bencehuszár000@gmail.com', '2018.04.19.', 'ADMIN');

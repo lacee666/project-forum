@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import static com.forum.forum.model.User.Role.ADMIN;
 import static com.forum.forum.model.User.Role.USER;
 
+import java.util.Optional;
+
 @RestController
 //for testing purposes
 @CrossOrigin(origins = "*")
@@ -62,4 +64,13 @@ public class UserApiController {
         }
     }
 
+    @GetMapping("/trololo")
+    public ResponseEntity<User> trololo(){
+        User users = userRepository.findByUsername("Bence");
+        try {
+            return ResponseEntity.ok(users);
+        } catch (UserNotValidException e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
 }
