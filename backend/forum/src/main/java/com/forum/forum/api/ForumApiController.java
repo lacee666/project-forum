@@ -1,10 +1,12 @@
 package com.forum.forum.api;
 
 import com.forum.forum.model.Forum;
+import com.forum.forum.model.ForumPost;
 import com.forum.forum.repository.ForumPostRepository;
 import com.forum.forum.service.ForumService;
 import com.forum.forum.model.User;
 import com.forum.forum.service.exception.ForumNotValidException;
+import com.forum.forum.service.exception.UserNotValidException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,31 +15,42 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 //for testing purposes
 @CrossOrigin(origins = "*")
-@RequestMapping("/api/forum")
+@RequestMapping("/api/f")
 public class ForumApiController {
-    /*@Autowired
+    @Autowired
     private ForumService forumService;
 
     @Autowired
     private ForumPostRepository userRepository;
 
 
-    @GetMapping("/{id}")
-    public String getForum(@PathVariable long id) {
-        return forumService.getForum(id);
+    //@Role({USER, ADMIN})
+    @GetMapping("{forumName}")
+    public ResponseEntity<Forum> getForumByForumName(@PathVariable String forumName) {
+        try {
+            return ResponseEntity.ok(forumService.getForumByForumName(forumName));
+        } catch (ForumNotValidException e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 
-
     @PostMapping("/create")
-    public ResponseEntity<Forum> createForum(@RequestBody Forum forum) {
-        System.out.println("Creating a new forum...");
+    public ResponseEntity<Forum> create(@RequestBody Forum forum) {
+        System.out.println("Registering user...");
         try {
-            return ResponseEntity.ok(forumService.create(forum.getForumName(), forum.getDescription(), forum.getProfilePic(), forum.getForumAdminId()));
+            return ResponseEntity.ok(forumService.create(forum));
+        } catch (ForumNotValidException e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    //@Role({USER, ADMIN})
+    @GetMapping("{id}/{postId}")
+    public ResponseEntity<ForumPost> getForumByForumName(@PathVariable long id, @PathVariable long postId) {
+        try {
+            return ResponseEntity.ok(forumService.getForumPost(id, postId));
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
-    }*/
-
-
-
+    }
 }

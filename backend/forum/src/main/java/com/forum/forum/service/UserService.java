@@ -18,14 +18,15 @@ public class UserService {
 
     public User login(User user) throws UserNotValidException {
         if (isValid(user)) {
-            return null;
-            // return this.user = userRepository.findByUsername(user.getUsername());
+            return this.user = userRepository.findByUsername(user.getUsername());
         }
         throw new UserNotValidException();
     }
-
+    public boolean isValid(User user) {
+        return userRepository.findByUsername(user.getUsername()) != null && user.getPassword().equals(userRepository.findByUsername(user.getUsername()).getPassword());
+    }
     public User register(User user) throws UserNotValidException {
-        if (user.getPassword().length() < 16) {
+        if (user.getPassword().length() > 16 || user.getPassword().length() < 6 || user.getUsername().length() < 6 || user.getUsername().length() > 16) {
             throw new UserNotValidException();
         }
         user.setRole(USER);
@@ -37,17 +38,27 @@ public class UserService {
         userRepository.save(user);
         return user;
     }
-
-    public boolean isValid(User user) {
-        return true;
-        //return userRepository.findByUsername(user.getUsername()) != null && user.getPassword().equals(userRepository.findByUsername(user.getUsername()).getPassword());
+    public User getUserById(long id) throws UserNotValidException {
+        try{
+            return userRepository.findById(id);
+        }catch(Exception e) {
+            throw new UserNotValidException();
+        }
     }
+    public User getUserByUserName(String userName) throws UserNotValidException {
+        try{
+            return userRepository.findByUsername(userName);
+        }catch(Exception e) {
+            throw new UserNotValidException();
+        }
+    }
+
 
     public boolean isLoggedIn() {
         return true;
     }
 
-    public User getUser() {
+    public User getUser() throws  UserNotValidException {
         return this.user;
     }
 }

@@ -1,5 +1,6 @@
 package com.forum.forum.service;
 
+import com.forum.forum.service.exception.ForumNotValidException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,14 +17,41 @@ public class ForumService {
 
     private User user;
 
-    public Forum create(String name, String description, byte[] picture, long adminId) {
-        Forum forum = new Forum(name, description, adminId, picture);
-        forum.setCreationDate(new Date().toString());
-        forumRepository.save(forum);
-        System.out.println("Forum created.");
-        return forum;
+    //String name, String description, byte[] picture, long adminId
+    public Forum create(Forum forum) throws  ForumNotValidException {
+        try{
+            Forum newForum = new Forum(forum.getForumName(), forum.getDescription(), forum.getForumAdminId(), forum.getPicture());
+            newForum.setCreationDate(new Date().toString());
+            forumRepository.save(newForum);
+            System.out.println("New Forum created.");
+            return newForum;
+        }catch (Exception e){
+            throw  new ForumNotValidException();
+        }
     }
-    public String getForum(long id){
-        return forumRepository.findById(id).getForumName();
+
+    public Forum getForumByForumId(long id) throws ForumNotValidException {
+        try{
+            return forumRepository.findById(id);
+        }catch (Exception e){
+            throw new ForumNotValidException();
+        }
+
+    }
+    public Forum getForumByForumName(String forumName)throws ForumNotValidException {
+        try{
+            return forumRepository.findByForumName(forumName);
+        }catch (Exception e){
+            throw new ForumNotValidException();
+        }
+    }
+
+    public ForumPost getForumPost(long forumId, long postId) throws ForumNotValidException {
+        try{
+            return null;
+           //return forumRepository.findByForumPost(forumId, postId);
+        }catch (Exception e){
+            throw new ForumNotValidException();
+        }
     }
 }

@@ -26,22 +26,37 @@ public class UserApiController {
     private UserService userService;
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
 
-    @GetMapping("/woop")
-    public String woop() {
-        return "HI";
+    //@Role({USER, ADMIN})
+    @GetMapping("{id}")
+    public ResponseEntity<User> getUserById(@PathVariable long id) {
+        try {
+            return ResponseEntity.ok(userService.getUserById(id));
+        } catch (UserNotValidException e) {
+            return ResponseEntity.badRequest().build();
+        }
+
+    }
+    //@Role({USER, ADMIN})
+    @GetMapping("{username}")
+    public ResponseEntity<User> getUserByUserName(@PathVariable String userName) {
+        try {
+            return ResponseEntity.ok(userService.getUserByUserName(userName));
+        } catch (UserNotValidException e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 
-
-    @Role({USER, ADMIN})
-    @GetMapping
-    public ResponseEntity<User> user() {
-        if (userService.isLoggedIn()) {
+    //@Role({USER, ADMIN})
+    @GetMapping("/profile")
+    public ResponseEntity<User> getCurrentUser() {
+        try {
             return ResponseEntity.ok(userService.getUser());
+        } catch (UserNotValidException e) {
+            return ResponseEntity.badRequest().build();
         }
-        return ResponseEntity.badRequest().build();
     }
 
     @PostMapping("/login")
@@ -64,13 +79,4 @@ public class UserApiController {
         }
     }
 
-    @GetMapping("/trololo")
-    public ResponseEntity<User> trololo(){
-        User users = userRepository.findByUsername("Bence");
-        try {
-            return ResponseEntity.ok(users);
-        } catch (UserNotValidException e) {
-            return ResponseEntity.badRequest().build();
-        }
-    }
 }
