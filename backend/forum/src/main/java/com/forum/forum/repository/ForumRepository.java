@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 public interface ForumRepository extends JpaRepository<Forum, Long> {
     Forum findById(long id);
     Forum findByForumName(String forumName);
-/*
+    /*
     @Query("SELECT * FROM ((SELECT id FROM FORUM where id = forumId) join FORUMPOST where forum.postId = postId)")
     ForumPost findByForumPost(@Param("forumId")long forumId, @Param("postId")long postId);
     */

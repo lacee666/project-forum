@@ -13,6 +13,9 @@ export class ForumlisterComponent implements OnInit {
 
   ngOnInit() {
     this.forumList = this.forumService.getAllForums();
+    console.log(this.forumList);
+    ;
+    
   }
 
 }

@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { HeaderComponent } from './components/header/header.component';
@@ -17,6 +16,7 @@ import { MyupvotesComponent } from './pages/myupvotes/myupvotes.component';
 import { MydownvotesComponent } from './pages/mydownvotes/mydownvotes.component';
 import { SubscribedforumsComponent } from './pages/subscribedforums/subscribedforums.component';
 import { ForumlisterComponent } from './components/forumlister/forumlister.component';
+import { ForumService } from './services/forum.service';
 
 
 @NgModule({
@@ -40,7 +40,7 @@ import { ForumlisterComponent } from './components/forumlister/forumlister.compo
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ForumService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
