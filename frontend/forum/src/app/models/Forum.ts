@@ -1,6 +1,7 @@
 export class Forum{
-    title: String;
+    forumName: String;
+    description: String;
+    creationDate: String;
+    forumAdminId : number;
     picture: ByteString;
-    text: String;
-    admin: String;
 }

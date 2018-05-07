@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @RestController
 //for testing purposes
@@ -24,12 +27,28 @@ public class ForumApiController {
     private ForumPostRepository userRepository;
 
 
+    @GetMapping("/all")
+    public List<Forum> getAllForums(){
+        try{
+            System.out.println("ok");
+            return forumService.getAllForums();
+        }catch(Exception e){
+            System.out.println("F");
+            ArrayList<Forum> f = new ArrayList<Forum>();
+            f.add(new Forum("asd", "asd", 1));
+            f.add(new Forum("asd", "asd", 1));
+            f.add(new Forum("asd", "asd", 1));
+            return f;
+        }
+    }
     //@Role({USER, ADMIN})
     @GetMapping("{forumName}")
     public ResponseEntity<Forum> getForumByForumName(@PathVariable String forumName) {
         try {
+
             return ResponseEntity.ok(forumService.getForumByForumName(forumName));
         } catch (ForumNotValidException e) {
+
             return ResponseEntity.badRequest().build();
         }
     }

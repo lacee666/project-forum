@@ -12,7 +12,8 @@ export class ForumlisterComponent implements OnInit {
   constructor(private forumService: ForumService) { }
 
   ngOnInit() {
-    this.forumList = this.forumService.getAllForums();
+
+    this.forumService.getAllForums().subscribe(res => this.forumList = res);
     console.log(this.forumList);
     ;
     

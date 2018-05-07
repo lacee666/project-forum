@@ -19,6 +19,7 @@ import { ForumlisterComponent } from './components/forumlister/forumlister.compo
 import { ForumService } from './services/forum.service';
 
 
+import { HttpModule } from '@angular/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,10 +38,11 @@ import { ForumService } from './services/forum.service';
     ForumlisterComponent
   ],
   imports: [
+    HttpModule,
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [ForumService],
+  providers: [ForumService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

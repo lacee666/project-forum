@@ -16,16 +16,16 @@ import java.util.*;
 @EqualsAndHashCode(callSuper = true)
 public class Forum extends BaseEntity {
 
-    @Column(nullable = false, unique = true, length = 50)
+    @Column(nullable = true, unique = true, length = 50)
     private String forumName;
 
     @Column(nullable = false, unique = true, length = 100)
     private String description;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String creationDate;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private long forumAdminId;
 
     //not sure if this works

@@ -8,7 +8,9 @@ import com.forum.forum.model.*;
 import com.forum.forum.repository.*;
 
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class ForumService {
@@ -29,7 +31,14 @@ public class ForumService {
             throw  new ForumNotValidException();
         }
     }
-
+    public List<Forum> getAllForums() throws ForumNotValidException {
+        try{
+            return (List<Forum>)forumRepository.findAll();
+        }catch(Exception e){
+            System.out.println("rip");
+            throw new ForumNotValidException();
+        }
+    }
     public Forum getForumByForumId(long id) throws ForumNotValidException {
         try{
             return forumRepository.findById(id);
