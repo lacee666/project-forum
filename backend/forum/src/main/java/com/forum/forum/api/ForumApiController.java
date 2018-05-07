@@ -42,7 +42,7 @@ public class ForumApiController {
         }
     }
     //@Role({USER, ADMIN})
-    @GetMapping("{forumName}")
+    @GetMapping("{forumname}")
     public ResponseEntity<Forum> getForumByForumName(@PathVariable String forumName) {
         try {
 

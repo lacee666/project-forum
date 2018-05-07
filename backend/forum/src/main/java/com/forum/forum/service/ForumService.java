@@ -49,7 +49,8 @@ public class ForumService {
     }
     public Forum getForumByForumName(String forumName)throws ForumNotValidException {
         try{
-            return forumRepository.findByForumName(forumName);
+            return null;
+            //return forumRepository.findByForumName(forumName);
         }catch (Exception e){
             throw new ForumNotValidException();
         }
