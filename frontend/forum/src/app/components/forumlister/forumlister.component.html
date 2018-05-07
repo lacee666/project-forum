@@ -1,11 +1,11 @@
-<div class="forums" *ngFor="let forum of forumList">
-  <article class="content">
-      <h2 class="section-title">
-          {{forum.title}}
-      </h2>
-      <div class="forumtext">
-          <span>{{forum.text}}</span>
-          <span>{{forum.admin}}</span>
-      </div>
-  </article>
-</div>
+<ol class="rounded-list" *ngFor="let forum of forumList">
+     <li>
+        <a href= "">
+            <h3>{{forum.title}}</h3>
+            <div class="forumtext">
+                    <p>{{forum.text}}</p>
+                    <p>{{forum.admin}}</p>
+            </div>    
+        </a>      
+    </li>     
+</ol>
