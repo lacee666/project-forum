@@ -1,4 +1,4 @@
-# project-forum
+# project-forum documentation
 How to build and run:
 - Download and install the followings:
      - Node 8.X.X version
@@ -16,8 +16,18 @@ How to build and run:
 Functional requirements:
 Project-forum is a website for all kinds of good purpose forumtypes. We do not condone any hate, crime or or malicious activities. The forum provides a good place to share your thoughts with anyone around the world. All guests can register on the website and become users who can then create subforums, forumposts and comments.
 
+Non-Functional requirements:
+The website has to be secure, no information can be given out to third parties and cannot sell any user data. The website protects the users data and only the user can access it. The forum also has to be accessible all around the world and users who have some kind of disabilities should read the website with ease. 
 Use Case diagram:
 ![usecase](task/usecase.png)
+Roles:
+     - Guest: guests can register, login and access the forums, forumposts and comments.
+     - User: users can logout, create forum where they can delete comments, delete forumposts, ban users and delete the forum. They can  access the forumpages too and create forumposts, comments, upvote and downvote. They can also have favorites and can see their  upvotes and downvotes.
+
+Directory structure:
+![usecase](task/dir-frontend.jpg)
+![usecase](task/dir-backend.jpg)
+-----------------------------------------
 EXTRA TOOLS:
 1. SonarQube:
 https://docs.sonarqube.org/display/SONAR/Setup+and+Upgrade
@@ -33,6 +43,7 @@ sonar.sources = a ForumApplication.java mappája (.../forum/src/main/java/com/fo
 - localhost:9000-en fog futni
 - backend forumban nyomjatok egy mvn sonar:sonar
 - ha ezt befejezte, akkor a szerveren lehet látni az eredményt
+
 
 2. google-java-formatter
 setup:
