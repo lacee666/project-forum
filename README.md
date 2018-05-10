@@ -1,10 +1,11 @@
-# project-forum documentation
+Projekt eszközök
 ## Team
 - Bulatovic László
 - Vass Zsigmond Ádám
 - Velkei Bence
 - Veress Marcell
 
+# project-forum documentation
 
 ## How to build and run:
 - Download and install the followings:
@@ -31,32 +32,42 @@ Use Case diagram:
      - Guest: guests can register, login and access the forums, forumposts and comments.
      - User: users can logout, create forum where they can delete comments, delete forumposts, ban users and delete the forum. They can  access the forumpages too and create forumposts, comments, upvote and downvote. They can also have favorites and can see their  upvotes and downvotes.
 
-### Directory structure:
+## Endpoints
+- GET Index page: /index or /
+- GET Profile page: /profile
+- GET User page: /user/{id}
+- GET Forum page: /forum/{forumName}
+- GET Forumpost page: /forum/{forumName}/{id}
+- POST registration: /registration
+- GET login: /login
+- Get all forums: /all
+
+### Backend
+- Registration: /registration
+Tables:
+![database-tables](task/database-tables.JPG)
+## Directory structure:
 ![dir-backend](task/dir-backend.JPG)
 ![dir-frontend](task/dir-frontend.JPG)
------------------------------------------
-EXTRA TOOLS:
+
+## Extra tools used for build
 1. SonarQube:
-https://docs.sonarqube.org/display/SONAR/Setup+and+Upgrade
-https://www.sonarqube.org/
-tldr setup: 
-- töltsétek le, pathba tegyétek bele a sonarqube {út}/sonarqube-6.7.2/bin/{verzió}
-- conf/sonar.properties legaljára szúrjátok be:
-sonar.projetKey = forum
-sonar.projectName = forum
-sonar.projectVersion = 1.0
-sonar.sources = a ForumApplication.java mappája (.../forum/src/main/java/com/forum/forum)
-- indítsátok el a sonarqubet a bin/{verzió} mappában StartSonar.bat paranccsal
-- localhost:9000-en fog futni
-- backend forumban nyomjatok egy mvn sonar:sonar
-- ha ezt befejezte, akkor a szerveren lehet látni az eredményt
-
-
+- Setup:
+     - Download the newest (non-beta) version of SonarQube and include it in the system variables path: {sonarqupe-dir}/sonarqube-{version}/bin/{os-version}
+     - At the last line of "{sonarqube-dir}/conf/sonar.properties" insert the following:
+          sonar.projetKey = forum
+          sonar.projectName = forum
+          sonar.projectVersion = 1.0
+          sonar.sources = ForumApplication.java file directory (.../forum/src/main/java/com/forum/forum)
+     - Run SonarQube at bin/{os-version}/StartSonar.bat (it will be running on port 9000)
+     - Run the command "mvn sonar:sonar" at backend/forum directory
+     - Open localhost:9090 in a browser and use can now use it.
 2. google-java-formatter
-setup:
-IntelliJ-ben File, Settings, Plugin, Browse repositories,search for google-java-formatter, restart, ctrl+alt+L format code 
-------------------------------------------
+- Setup   
+     - In IntelliJ do the following: File -> Setting -> Plugin -> Browse repositories. Search for google-java formatter and install it. Restart the IDE and now you can reformat code by pressing CTRL+ALT+L
 
+
+-----------------------------------------
 Tutorialok:
 alkfejl tuts(frontend and backend):
 https://github.com/godzsa/issue-tracker
