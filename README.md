@@ -26,12 +26,14 @@ Project-forum is a website for all kinds of good purpose forumtypes. We do not c
 
 ## Non-Functional requirements:
 The website has to be secure, no information can be given out to third parties and cannot sell any user data. The website protects the users data and only the user can access it. The forum also has to be accessible all around the world and users who have some kind of disabilities should read the website with ease. 
-Use Case diagram:
-![usecase](task/usecase.png)
-### Roles:
-     - Guest: guests can register, login and access the forums, forumposts and comments.
-     - User: users can logout, create forum where they can delete comments, delete forumposts, ban users and delete the forum. They can  access the forumpages too and create forumposts, comments, upvote and downvote. They can also have favorites and can see their  upvotes and downvotes.
 
+## Use Case diagram:
+![usecase](task/usecase.png)
+
+### Roles:
+- Guest: guests can register, login and access the forums, forumposts and comments.
+- User: users can logout, create forum where they can delete comments, delete forumposts, ban users and delete the forum. They can  access the forumpages too and create forumposts, comments, upvote and downvote. They can also have favorites and can see their  upvotes and downvotes.
+    
 ## Endpoints
 - GET Index page: /index or /
 - GET Profile page: /profile
@@ -43,9 +45,8 @@ Use Case diagram:
 - Get all forums: /all
 
 ### Backend
-- Registration: /registration
-Tables:
 ![database-tables](task/database-tables.JPG)
+
 ## Directory structure:
 ![dir-backend](task/dir-backend.JPG)
 ![dir-frontend](task/dir-frontend.JPG)
@@ -53,7 +54,7 @@ Tables:
 ## Extra tools used for build
 1. SonarQube:
 - Setup:
-     - Download the newest (non-beta) version of SonarQube and include it in the system variables path: {sonarqupe-dir}/sonarqube-{version}/bin/{os-version}
+     - Download the newest (non-beta) version of SonarQube and include it in the system variables path: {sonarqube-dir}/sonarqube-{version}/bin/{os-version}
      - At the last line of "{sonarqube-dir}/conf/sonar.properties" insert the following:
           sonar.projetKey = forum
           sonar.projectName = forum
