@@ -1,7 +1,10 @@
 <app-header></app-header>
 
-<h2>{{id}}</h2>
-<h3>{{currentForum.description}}</h3>
-<h3>{{currentForum.forumAdminId}}</h3>
-
+<h2>PARAM: {{id}}</h2>
+<h3>FORUM DESCRIPTION: {{currentForum.description}}</h3>
+<h3>FORUM ADMIN ID: {{currentForum.forumAdminId}}</h3>
+<h1>FORUM ID: {{currentForum.id}}</h1>
+<input type="text" name="search" placeholder="Search.." #foodName>
+<input type="text" name="foodAmount" placeholder="Amount(g)" #foodAmount>
+<button name="submit" type="submit" id="contact-submit" data-submit="...Sending" (click)="addForumPost(foodName.value, foodAmount.value)">Add food</button>
 <app-footer></app-footer>

@@ -1,9 +1,7 @@
 package com.forum.forum.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.*;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.*;
@@ -14,6 +12,10 @@ import java.util.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
+@JsonIdentityInfo( scope = Forum.class,
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id"
+)
 public class Forum extends BaseEntity {
 
     @Column(nullable = false, unique = true, length = 50)
@@ -33,12 +35,20 @@ public class Forum extends BaseEntity {
     @Column(name="FORUM_PICTURE")
     private byte[] picture;
 
+
+
     @ElementCollection
     @CollectionTable(name = "forum_users", joinColumns = @JoinColumn(name = "iduser"))
     private Set<Long> subscribedUserIds = new HashSet<>();
 
+
+
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "forum")
     private Set<ForumPost> forumPosts = new HashSet<>();
+
+
+
 
     public Forum(String forumName, String description, long forumAdminId, byte[] picture) {
         this.forumName = forumName;
@@ -58,6 +68,6 @@ public class Forum extends BaseEntity {
         for(ForumPost f: forumPosts){
             sb.append(f.getTitle() + ", ");
         }
-        return "[" + forumName + ", " + description + ", " + creationDate + ", " + forumAdminId + ", comments: " + sb.toString() + "]";
+        return "[" + forumName + ", " + description + ", " + creationDate + ", " + forumAdminId + ", forumPost titles: " + sb.toString() + "]";
     }
 }

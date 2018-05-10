@@ -1,10 +1,9 @@
 package com.forum.forum.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -16,9 +15,14 @@ import java.util.Set;
 @Entity
 @Table(name = "FORUMPOST")
 @Data
-@AllArgsConstructor
+
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
+@ToString(exclude = "forum")
+@JsonIdentityInfo( scope = ForumPost.class,
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id"
+)
 public class ForumPost extends BaseEntity {
 
     @Column(nullable = false)
@@ -41,18 +45,24 @@ public class ForumPost extends BaseEntity {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "post")
     private Set<Comment> comments = new HashSet<>();
 
+
+
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "forum_id", nullable = false)
     private Forum forum;
 
-    public ForumPost(String title, String description) {
-        this.title = title;
-        this.description = description;
+    public void setForum(Forum forum) {
+        this.forum = forum;
     }
-
     public ForumPost(String title, String description, byte[] picture) {
         this.title = title;
         this.description = description;
         this.picture = picture;
+    }
+
+    @Override
+    public String toString(){
+        return "[" + title + ", " + description + ", " + creationDate + "]";
     }
 }

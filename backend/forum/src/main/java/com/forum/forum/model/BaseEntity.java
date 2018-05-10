@@ -14,7 +14,5 @@ public class BaseEntity {
     @Version
     private int version;
 
-    public long getId() {
-        return id;
-    }
+
 }

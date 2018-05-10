@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.forum.forum.model.*;
 import com.forum.forum.repository.*;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.ArrayList;
@@ -40,7 +41,14 @@ public class ForumService {
             throw new ForumNotValidException();
         }
     }
-
+    public List<ForumPost> getAllForumPosts() throws ForumNotValidException {
+        try {
+            return (List<ForumPost>) forumPostRepository.findAll();
+        } catch (Exception e) {
+            System.out.println("rip");
+            throw new ForumNotValidException();
+        }
+    }
     public Forum getForumByForumId(long id) throws ForumNotValidException {
         try {
             return null;
@@ -65,6 +73,29 @@ public class ForumService {
             return null;
             //return forumRepository.findByForumPost(forumId, postId);
         } catch (Exception e) {
+            throw new ForumNotValidException();
+        }
+    }
+
+    @Autowired
+    private ForumPostRepository forumPostRepository;
+
+    public ForumPost addForumPost(ForumPost forumPost, long id) throws ForumNotValidException {
+        try {
+
+            forumPost.setCreationDate(new Date().toString());
+            System.out.println("ForumPost: " + forumPost.toString());
+
+            Forum forum = forumRepository.findById(id);
+            System.out.println("OK Forum with: "+ id + ". id found: " + forum.toString());
+
+            forumPost.setForum(forum);
+
+            return forumPostRepository.save(forumPost);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error. ForumPost not added.");
             throw new ForumNotValidException();
         }
     }

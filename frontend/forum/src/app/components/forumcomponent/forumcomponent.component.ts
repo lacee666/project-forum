@@ -25,5 +25,7 @@ export class ForumcomponentComponent implements OnInit {
    
   }
 
- 
+  addForumPost(title, description){
+      this.forumService.addForumPost(title, description, this.currentForum.id);
+  }
 }

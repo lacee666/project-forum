@@ -6,6 +6,7 @@ import {Observable} from 'rxjs/observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import {Router} from '@angular/router';
+import { ForumPost } from '../models/ForumPost';
 
 
 @Injectable()
@@ -44,5 +45,17 @@ export class ForumService {
   }
   getForumByName(forumName): Observable<Forum>{
     return this.http.get(this.url + '/'+ forumName).map(res => res.json());
+  }
+
+  addForumPost(title, description, id){
+    try{
+      let forumpost: ForumPost = new ForumPost();
+      forumpost.title = title;
+      forumpost.description = description;
+      const response : Observable<any> = this.http.post(this.url + '/' + id + '/addForumPost', forumpost);      
+      const responsePromise: Promise<any> = response.toPromise();
+  }catch(error){
+    console.log('LOOOOOOOOOOOOOOOOL 4HEad')
+  } 
   }
 }
