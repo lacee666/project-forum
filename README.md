@@ -16,6 +16,8 @@ How to build and run:
 Functional requirements:
 Project-forum is a website for all kinds of good purpose forumtypes. We do not condone any hate, crime or or malicious activities. The forum provides a good place to share your thoughts with anyone around the world. All guests can register on the website and become users who can then create subforums, forumposts and comments.
 
+Use Case diagram:
+![usecase](task/usecase.png)
 EXTRA TOOLS:
 1. SonarQube:
 https://docs.sonarqube.org/display/SONAR/Setup+and+Upgrade
