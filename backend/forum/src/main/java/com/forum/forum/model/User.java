@@ -30,7 +30,7 @@ public class User extends BaseEntity {
     private String email;
 
     //using Date
-    @Column(name = "rdate", nullable = false)
+    @Column(nullable = false)
     private String registrationDate;
 
     @ElementCollection
@@ -82,5 +82,14 @@ public class User extends BaseEntity {
         this.email = email;
         this.picture = picture;
     }
-	
+
+    @Override
+    public String toString(){
+        if(this == null){
+            return "null";
+        }else{
+            return "[" + username + ", " + email + ", " + registrationDate + ", " + role.toString() + "]";
+        }
+
+    }
 }

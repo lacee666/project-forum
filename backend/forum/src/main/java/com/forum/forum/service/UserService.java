@@ -7,6 +7,8 @@ import com.forum.forum.model.*;
 import com.forum.forum.repository.*;
 import com.forum.forum.service.exception.*;
 
+import java.sql.Timestamp;
+
 import static com.forum.forum.model.User.Role.USER;
 
 @Service
@@ -17,26 +19,45 @@ public class UserService {
     private User user;
 
     public User login(User user) throws UserNotValidException {
-        if (isValid(user)) {
-            return this.user = userRepository.findByUsername(user.getUsername());
+        if(user == null){
+            System.out.println("User is null.");
+            return null;
         }
-        throw new UserNotValidException();
+        try{
+            if (isValid(user)) {
+                this.user = userRepository.findByUsername(user.getUsername());
+                System.out.println("User found: " + this.user.toString());
+                return this.user;
+            }else{
+                System.out.println("Username or password not valid for: " + user.getUsername());
+                return null;
+            }
+        }catch(Exception e){
+            throw new UserNotValidException();
+        }
     }
     public boolean isValid(User user) {
         return userRepository.findByUsername(user.getUsername()) != null && user.getPassword().equals(userRepository.findByUsername(user.getUsername()).getPassword());
     }
     public User register(User user) throws UserNotValidException {
-        if (user.getPassword().length() > 16 || user.getPassword().length() < 6 || user.getUsername().length() < 6 || user.getUsername().length() > 16) {
+        try{
+            if (user.getPassword().length() > 16 || user.getPassword().length() < 6 || user.getUsername().length() < 6 || user.getUsername().length() > 16) {
+                throw new UserNotValidException();
+            }
+            user.setRole(USER);
+            user.setRegistrationDate(new Timestamp(System.currentTimeMillis()).toString());
+            /*
+            PasswordEncoder encoder = new BCryptPasswordEncoder();
+            String encodedPassword = encoder.encode(user.getPassword());
+            user.setPassword(encodedPassword);
+            */
+            userRepository.save(user);
+            System.out.println("User has been saved: " + user.toString());
+            return user;
+        }catch (Exception e){
             throw new UserNotValidException();
         }
-        user.setRole(USER);
-        /*
-        PasswordEncoder encoder = new BCryptPasswordEncoder();
-        String encodedPassword = encoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
-        */
-        userRepository.save(user);
-        return user;
+
     }
     public User getUserById(long id) throws UserNotValidException {
         try{
