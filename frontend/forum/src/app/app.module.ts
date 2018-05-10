@@ -20,6 +20,7 @@ import { ForumService } from './services/forum.service';
 
 
 import { HttpModule } from '@angular/http';
+import { ForumcomponentComponent } from './components/forumcomponent/forumcomponent.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,8 @@ import { HttpModule } from '@angular/http';
     MyupvotesComponent,
     MydownvotesComponent,
     SubscribedforumsComponent,
-    ForumlisterComponent
+    ForumlisterComponent,
+    ForumcomponentComponent
   ],
   imports: [
     HttpModule,

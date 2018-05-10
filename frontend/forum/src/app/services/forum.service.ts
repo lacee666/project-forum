@@ -42,4 +42,7 @@ export class ForumService {
   getAllForums(): Observable<Array<Forum>>{
     return this.http.get(this.url + '/all').map((res => res.json()));
   }
+  getForumByName(forumName): Observable<Forum>{
+    return this.http.get(this.url + '/'+ forumName).map(res => res.json());
+  }
 }

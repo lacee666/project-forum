@@ -41,7 +41,7 @@ public class ForumService {
     }
     public Forum getForumByForumId(long id) throws ForumNotValidException {
         try{
-            return forumRepository.findById(id);
+            return null;
         }catch (Exception e){
             throw new ForumNotValidException();
         }
@@ -49,8 +49,9 @@ public class ForumService {
     }
     public Forum getForumByForumName(String forumName)throws ForumNotValidException {
         try{
-            return null;
-            //return forumRepository.findByForumName(forumName);
+            Forum returnForum = forumRepository.findByForumName(forumName);
+            System.out.println("Return forum: " + returnForum);
+            return returnForum;
         }catch (Exception e){
             throw new ForumNotValidException();
         }

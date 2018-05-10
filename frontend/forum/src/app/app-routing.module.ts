@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 // COMPONENTS
 import {IndexComponent} from './pages/index/index.component';
 import {LoginComponent} from './pages/login/login.component';
+
 import {ContactComponent} from './pages/contact/contact.component';
 import {MycommentsComponent} from './pages/mycomments/mycomments.component';
 import {MydownvotesComponent} from './pages/mydownvotes/mydownvotes.component';
@@ -13,6 +14,8 @@ import {MythreadsComponent} from './pages/mythreads/mythreads.component';
 import {ProfileComponent} from './pages/profile/profile.component';
 import {SubscribedforumsComponent} from './pages/subscribedforums/subscribedforums.component';
 
+
+import {ForumcomponentComponent} from './components/forumcomponent/forumcomponent.component';
 const routes: Routes = [
   { path: '', component: IndexComponent},
   { path: 'login', component: LoginComponent},
@@ -24,6 +27,8 @@ const routes: Routes = [
   { path: 'mythreads',  component: MythreadsComponent},
   { path: 'profile',  component: ProfileComponent},
   { path: 'subscribedforums',  component: SubscribedforumsComponent},
+  {path: 'forum', component: ForumcomponentComponent},
+  {path: 'forum/:forumName', component: ForumcomponentComponent},
 ];
 
 @NgModule({

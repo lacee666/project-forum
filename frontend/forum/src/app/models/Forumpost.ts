@@ -3,4 +3,5 @@ export class ForumPost{
     picture: ByteString;
     text: String;
     user: String;
+    comments: Array<Comment>;
 }

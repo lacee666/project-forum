@@ -1,11 +1,9 @@
 <ol class="rounded-list" *ngFor="let forum of forumList">
      <li>
-        <a href= "">
-            <h3>{{forum.forumName}}</h3>
-            <div class="forumtext">
-                    <p>{{forum.description}}</p>
-                    <p>{{forum.forumAdminId}}</p>
-            </div>    
-        </a>      
+        <div class="forumtext">
+            <h3><a (click)="onSelect(forum)">{{forum.forumName}}</a></h3>          
+            <p>{{forum.description}}</p>
+            <p>{{forum.forumAdminId}}</p>
+        </div>        
     </li>     
 </ol>

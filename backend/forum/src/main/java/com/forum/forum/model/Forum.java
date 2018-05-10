@@ -16,16 +16,16 @@ import java.util.*;
 @EqualsAndHashCode(callSuper = true)
 public class Forum extends BaseEntity {
 
-    @Column(nullable = true, unique = true, length = 50)
+    @Column(nullable = false, unique = true, length = 50)
     private String forumName;
 
     @Column(nullable = false, unique = true, length = 100)
     private String description;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String creationDate;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private long forumAdminId;
 
     //not sure if this works
@@ -51,5 +51,13 @@ public class Forum extends BaseEntity {
         this.forumName = forumName;
         this.description = description;
         this.forumAdminId = forumAdminId;
+    }
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        for(ForumPost f: forumPosts){
+            sb.append(f.getTitle() + ", ");
+        }
+        return "[" + forumName + ", " + description + ", " + creationDate + ", " + forumAdminId + ", comments: " + sb.toString() + "]";
     }
 }

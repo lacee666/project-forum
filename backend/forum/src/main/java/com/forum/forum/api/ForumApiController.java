@@ -30,25 +30,21 @@ public class ForumApiController {
     @GetMapping("/all")
     public List<Forum> getAllForums(){
         try{
-            System.out.println("ok");
+            System.out.println("Getting all forums...");
             return forumService.getAllForums();
         }catch(Exception e){
-            System.out.println("F");
-            ArrayList<Forum> f = new ArrayList<Forum>();
-            f.add(new Forum("asd", "asd", 1));
-            f.add(new Forum("asd", "asd", 1));
-            f.add(new Forum("asd", "asd", 1));
-            return f;
+            return null;
         }
     }
     //@Role({USER, ADMIN})
-    @GetMapping("{forumname}")
+    @GetMapping("{forumName}")
     public ResponseEntity<Forum> getForumByForumName(@PathVariable String forumName) {
-        try {
 
+        try {
+            System.out.println("Getting forum back with name: " + forumName + ".");
             return ResponseEntity.ok(forumService.getForumByForumName(forumName));
         } catch (ForumNotValidException e) {
-
+            System.out.println("Error occured while finding a forum named: " + forumName + ".");
             return ResponseEntity.badRequest().build();
         }
     }
