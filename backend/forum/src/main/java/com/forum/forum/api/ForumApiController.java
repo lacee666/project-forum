@@ -4,14 +4,11 @@ import com.forum.forum.model.Forum;
 import com.forum.forum.model.ForumPost;
 import com.forum.forum.repository.ForumPostRepository;
 import com.forum.forum.service.ForumService;
-import com.forum.forum.model.User;
 import com.forum.forum.service.exception.ForumNotValidException;
-import com.forum.forum.service.exception.UserNotValidException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -20,23 +17,21 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/f")
 public class ForumApiController {
+
     @Autowired
     private ForumService forumService;
 
-    @Autowired
-    private ForumPostRepository userRepository;
-
 
     @GetMapping("/all")
-    public List<Forum> getAllForums(){
-        try{
+    public List<Forum> getAllForums() {
+        try {
             System.out.println("Getting all forums...");
             return forumService.getAllForums();
-        }catch(Exception e){
+        } catch (Exception e) {
             return null;
         }
     }
-    //@Role({USER, ADMIN})
+
     @GetMapping("{forumName}")
     public ResponseEntity<Forum> getForumByForumName(@PathVariable String forumName) {
 

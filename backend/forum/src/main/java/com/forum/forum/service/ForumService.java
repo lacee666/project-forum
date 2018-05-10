@@ -20,48 +20,51 @@ public class ForumService {
     private User user;
 
     //String name, String description, byte[] picture, long adminId
-    public Forum create(Forum forum) throws  ForumNotValidException {
-        try{
+    public Forum create(Forum forum) throws ForumNotValidException {
+        try {
             Forum newForum = new Forum(forum.getForumName(), forum.getDescription(), forum.getForumAdminId(), forum.getPicture());
             newForum.setCreationDate(new Date().toString());
             forumRepository.save(newForum);
             System.out.println("New Forum created.");
             return newForum;
-        }catch (Exception e){
-            throw  new ForumNotValidException();
+        } catch (Exception e) {
+            throw new ForumNotValidException();
         }
     }
+
     public List<Forum> getAllForums() throws ForumNotValidException {
-        try{
-            return (List<Forum>)forumRepository.findAll();
-        }catch(Exception e){
+        try {
+            return (List<Forum>) forumRepository.findAll();
+        } catch (Exception e) {
             System.out.println("rip");
             throw new ForumNotValidException();
         }
     }
+
     public Forum getForumByForumId(long id) throws ForumNotValidException {
-        try{
+        try {
             return null;
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new ForumNotValidException();
         }
 
     }
-    public Forum getForumByForumName(String forumName)throws ForumNotValidException {
-        try{
+
+    public Forum getForumByForumName(String forumName) throws ForumNotValidException {
+        try {
             Forum returnForum = forumRepository.findByForumName(forumName);
             System.out.println("Return forum: " + returnForum);
             return returnForum;
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new ForumNotValidException();
         }
     }
 
     public ForumPost getForumPost(long forumId, long postId) throws ForumNotValidException {
-        try{
+        try {
             return null;
-           //return forumRepository.findByForumPost(forumId, postId);
-        }catch (Exception e){
+            //return forumRepository.findByForumPost(forumId, postId);
+        } catch (Exception e) {
             throw new ForumNotValidException();
         }
     }

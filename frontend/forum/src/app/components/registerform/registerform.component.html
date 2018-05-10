@@ -1,0 +1,38 @@
+<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+<form #form="ngForm" (submit)="onSubmit()">
+  <div class="register">
+    <h2>Register here!</h2>
+    <div class="form-group">
+      <label for="email">Email:</label>
+        <input type="text"
+              required          
+              name="email" [(ngModel)]="registerModel.email"
+              #email="ngModel" />
+        <div *ngIf="email.invalid && email.touched" >
+          <span *ngIf="email.errors.required">Mandatory field!</span>     
+        </div>
+      </div>
+    <div class="form-group">
+    <label for="username">Username:</label>
+      <input type="text"
+            required          
+            name="username" [(ngModel)]="registerModel.username"
+            #username="ngModel" />
+      <div *ngIf="username.invalid && username.touched" >
+        <span *ngIf="username.errors.required">Mandatory field!</span>     
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password"           
+            name="password" [(ngModel)]="registerModel.password"
+            #password="ngModel" />
+      <div *ngIf="password.invalid && password.touched" >
+        <span *ngIf="password.errors.required">Mandatory field!</span>     
+      </div>
+    </div>
+    <input type="submit" value="Login"/>
+    <div *ngIf="loginFailedMessage"><h3>{{loginFailedMessage}}</h3></div>
+  </div>
+</form>
